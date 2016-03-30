@@ -5,19 +5,44 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.css" />
         <link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css' />
         <style type="text/css">
-          * {
+          #main-header {
             font-family: 'Titillium Web' ! important;
+            font-size: 60px;
+            color: brown;
           }
 
           #problemizer {
-            font-size: 45px;
+            font-family: 'Titillium Web' ! important;
+            font-size: 40px;
             color: #222;
             font-weight: normal;
+            line-height: 60px;
           }
 
-          #main-header {
-            font-size: 60px;
-            color: brown;
+          span.good, span.bad {
+            padding: 0 5px;
+          }
+
+          span.good {
+            background: #6CD4FF;
+            color: #5D576B;
+          }
+
+          span.bad {
+            background: #D496A7;
+          }
+
+          #twitter-link {
+            font-size: 12px;
+          }
+
+          #twitter-link a.link.label {
+            margin-left: 8px;
+          }
+
+          #another {
+            font-size: 40px;
+            width: 100%;
           }
         </style>
     </head>
@@ -25,8 +50,33 @@
 
       <div class="ui main text container" style="margin-top: 2em;">
         <div class="ui basic segment">
-          <h1 class="ui block header" id="main-header">offendatron&nbsp;.&nbsp;<em>services</em></h1>
+          <h1 class="ui block header" id="main-header">
+            <i class="settings icon"></i>
+            <div class="content">
+              offendatron
+              <div class="sub header">
+                <em>.&nbsp;services</em>
+              </div>
+            </div>
+          </h1>
           <h2 class="ui header" id="problemizer"></h2>
+        </div>
+
+        <button class="ui huge red button" id="another">
+          <i class="x icon"></i>
+          DEBUNK
+        </button>
+
+        <div class="ui right aligned footer basic segment" id="twitter-link">
+          hesitantly programmed by
+          <a class="ui blue link label" href="http://twitter.com/mcantor">
+            <i class="large twitter icon"></i>
+            mcantor
+          </a>
+          <a class="ui grey link label" href="http://github.com/mcantor">
+            <i class="large github icon"></i>
+            mcantor
+          </a>
         </div>
       </div>
 
@@ -35,9 +85,19 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js" type="text/javascript"></script>
       <script src="/offendatron.js" type="text/javascript"></script>
       <script type="text/javascript">
-        var offend = new Offendatron;
         var fill = document.getElementById("problemizer");
-        fill.innerHTML = offend.whine;
+
+        function whine() {
+          var offend = new Offendatron;
+          fill.innerHTML = offend.whine;
+        }
+
+        whine();
+
+        var another = document.getElementById("another");
+        another.onclick = function(){
+          whine();
+        };
       </script>
     </body>
 </html>

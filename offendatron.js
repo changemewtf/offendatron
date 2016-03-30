@@ -1,13 +1,3 @@
-var they = [
-  "I wish {{badGrp}}" + getBad() + " people would stop complaining about",
-  "I wish {{badGrp}}" + getBad() + " people would stop gloating about",
-  "Do " + getBad() + " people EVER shut up about",
-  "Why don't " + getBad() + " people just get over",
-  "Someone " + getBad() + " will always talk about",
-  "Are you really " + getBad() + "? Is it true",
-  "You're not like other " + getBad() + " people. Especially considering",
-];
-
 function getBad() { return getRandom(['{{bad}}', '"{{bad}}"']); }
 function getGood() { return getRandom(['{{good}}', '"{{good}}"']); }
 function goodBad() { return getRandom([getBad(), getGood()]); }
@@ -32,6 +22,21 @@ var bad = [
   "how \"we deserve to get {{get}}\"",
   "how \"we deserve to be {{good}}\"",
   "how everything awful happens because of " + getGood() + " people",
+  "how they're people",
+  "how {{bad}} people matter",
+  "how only facts matter",
+  "how only feelings matter",
+];
+
+var they = [
+  "I wish {{badGrp}}" + getBad() + " people would stop complaining about " + getRandom(bad) + ".",
+  "I wish {{badGrp}}" + getBad() + " people would stop gloating about " + getRandom(bad) + ".",
+  "Do " + getBad() + " people EVER shut up about " + getRandom(bad) + "?",
+  "Why don't " + getBad() + " people just get over " + getRandom(bad) + "?",
+  "Someone " + getBad() + " will always talk about " + getRandom(bad) + ".",
+  "Are you really " + getBad() + "? Is it true " + getRandom(bad) + "?",
+  "You're not like other " + getBad() + " people! Especially considering " + getRandom(bad) + ".",
+  "God I hate " + getBad() + " people.",
 ];
 
 var me = [
@@ -40,16 +45,17 @@ var me = [
   "I was born {{bad}}",
   "being {{good}} is borderline illegal these days",
   "I didn't like a {{bad}} person's smell once",
+  "I only hang out with {{good}} people",
+  "I learned all about {{good}} rhetoric",
   "some of my best friends are {{good}}",
   "I have a {{good}} friend who doesn't care",
   "I have a {{good}} friend that says it's hurtful",
-  "I'm not {{bad}}",
   "I didn't choose to be {{good}}",
   "I am {{good}}",
-  "I am {{bad}}",
-  "I am not {{good}}",
+//  "I am {{bad}}",
+//  "I am not {{good}}",
   "I am not {{bad}}",
-  "I am actually {{bad}}",
+//  "I am actually {{bad}}",
   "I am actually {{good}}",
   "I'm already getting {{get}}",
 ];
@@ -61,7 +67,7 @@ var good = [
   "I should get {{get2}}.",
   "I should get {{get2}}, too.",
   "I should get {{get2}} before they do.",
-  "don't I still deserve to get {{get2}}?",
+  "and I DEMAND {{get2}}!",
   "{{get}}? I'm 38% LESS likely to get it at all.",
   "I'm the only one who deserves to get {{get2}}.",
   "I learned that getting {{get2}} is easier if " + getRandom([
@@ -70,6 +76,7 @@ var good = [
    "everyone is already dead.",
    "God wills it.",
    "you just stop giving a fuck.",
+   "you're born into it",
   ]),
   "please don't judge me for it!",
   "please, feel free to just ignore me.",
@@ -81,8 +88,13 @@ var good = [
   "you don't see me making a fuss.",
   "you don't see me demanding special treatment.",
   "you don't see me throwing a tantrum.",
-  "I actually wanted it.",
-  "I just don't feel safe around " + goodBad() + " people."
+  "I actually wanted to be.",
+  "I just don't feel safe around " + goodBad() + " people.",
+  "you can't even prove that you're {{bad}}.",
+  "I know what I'm talking about because I'm {{good}}.",
+  "I just chose to NOT be {{bad}}.",
+  "you're just embarrassingly {{bad}}.",
+  "you're just jealous that you're not getting {{reward}}.",
 ];
 
 var problems = [
@@ -124,16 +136,16 @@ var problems = [
   {bad: "gender-critical", good: "trans"},
   {bad: "sexy", good: "plain"},
   {bad: "attractive", good: "homely"},
-  {bad: "worthless", good: "much cooler"},
-  {bad: "successful", good: "worthless"},
+  {bad: "failed", good: "much cooler"},
+  {bad: "successful", good: "failure"},
   {bad: "perfect", good: "defective"},
   {bad: "queer", good: "boring"},
-  {bad: "non-binary", good: "asexual"},
+  {bad: "non-binary", good: "cisgendered"},
   {bad: "disabled", good: "downright Olympian"},
   {bad: "retarded", good: "utterly awful"},
   {bad: "problematic", good: "politically correct"},
   {bad: "sighted", good: "blind"},
-  {bad: "blind", good: "transparent"},
+  {bad: "blind", good: "deaf"},
   {bad: "intellectual", good: "stupid"},
   {bad: "thin-skinned", good: "rotten to the core"},
   {bad: "hungry", good: "affluent"},
@@ -141,6 +153,16 @@ var problems = [
   {bad: "bad", good: "flawed"},
   {bad: "fake", good: "real"},
   {bad: "real", good: "actually real"},
+  {bad: "Twitter", good: "Tumblr"},
+  {bad: "cat", good: "dog"},
+  {bad: "vegetarian", good: "omnivore"},
+  {bad: "Scientologist", good: "Mormon"},
+  {bad: "nerdy", good: "normie"},
+  {bad: "needy", good: "generous"},
+  {bad: "weak", good: "strong"},
+  {bad: "artsy", good: "scientific"},
+  {bad: "abused", good: "enabling"},
+  {bad: "delusional", good: "rational"},
 ];
 
 var globalGood = ["just a decent human being"];
@@ -186,7 +208,7 @@ var rewards = [
   "a decent fucking role model",
   "a job offer",
   "that chick's phone number",
-  "relocate to San Francisco"
+  "relocated to San Francisco"
 ];
 
 function getRandom(items) {
@@ -202,7 +224,6 @@ function getConnector() {
 
 function getRandomTemplate() {
   return getRandom(they) + " " +
-    getRandom(bad) + ". " +
     getRandom(me) + getConnector() +
     getRandom(good);
 }
@@ -244,7 +265,10 @@ function Offendatron() {
 
   this.badGrp = getRandom(["these ", "those "]);
 
-  var tmpl = Handlebars.compile(getRandomTemplate());
+  this.good = '<span class="good">' + this.good + '</span>';
+  this.bad = '<span class="bad">' + this.bad + '</span>';
+
+  var tmpl = Handlebars.compile(getRandomTemplate(), {noEscape: true});
   this.whine = tmpl(this);
 };
 
